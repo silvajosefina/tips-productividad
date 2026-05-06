@@ -65,6 +65,18 @@ function App() {
     setTips(nuevosTips);
   };
 
+  const reiniciarVotos = () => {
+    const nuevosTips = [...tips];
+
+    for (let i = 0; i < nuevosTips.length; i++) {
+      nuevosTips[i] = {
+        ...nuevosTips[i],
+        votos: 0
+      };
+    }
+    setTips(nuevosTips);
+  };
+
   return (
     <>
       <h1>Tips de Productividad</h1>
@@ -72,6 +84,7 @@ function App() {
       <p>Votos: {tips[tipActual].votos}</p>
       <button onClick={mostrarTipAleatorio}>Siguiente tip</button>
       <button onClick={votarTip}>Votar este tip</button>
+      <button onClick={reiniciarVotos}>Reiniciar votos</button>
     </>
   )
 }
