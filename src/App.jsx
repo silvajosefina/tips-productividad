@@ -81,14 +81,23 @@ function App() {
     localStorage.setItem("tips", JSON.stringify(nuevosTips));
   };
 
+
+  function Boton(props) {
+    return (
+      <button onClick={props.click}>
+        {props.texto}
+      </button>
+    );
+  }
+
   return (
     <>
       <h1>Tips de Productividad</h1>
       <p>{tips[tipActual].tip}</p>
       <p>Votos: {tips[tipActual].votos}</p>
-      <button onClick={mostrarTipAleatorio}>Siguiente tip</button>
-      <button onClick={votarTip}>Votar este tip</button>
-      <button onClick={reiniciarVotos}>Reiniciar votos</button>
+      <Boton click={mostrarTipAleatorio} texto="Siguiente tip" />
+      <Boton click={votarTip} texto="Votar este tip" />
+      <Boton click={reiniciarVotos} texto="Reiniciar votos" />
     </>
   )
 }
