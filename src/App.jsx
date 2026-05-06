@@ -1,7 +1,4 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
-import heroImg from './assets/hero.png'
 import './App.css'
 
 function App() {
@@ -58,12 +55,25 @@ function App() {
     setTipActual(aleatorio);
   };
 
+  const votarTip = () => {
+    const nuevosTips = [...tips];
+    const tipSeleccionado = nuevosTips[tipActual];
+    nuevosTips[tipActual] = {
+      ...tipSeleccionado,
+      votos: tipSeleccionado.votos + 1,
+    };
+    setTips(nuevosTips);
+  };
+
   return (
     <>
       <h1>Tips de Productividad</h1>
       <p>{tips[tipActual].tip}</p>
+      <p>Votos: {tips[tipActual].votos}</p>
       <button onClick={mostrarTipAleatorio}>Siguiente tip</button>
+      <button onClick={votarTip}>Votar este tip</button>
     </>
-  )}
+  )
+}
 
-  export default App
+export default App
