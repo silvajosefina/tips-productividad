@@ -9,6 +9,8 @@ Cada tip tiene su cantidad de votos, y esos votos se guardan en el navegador med
 
 Además, existe un botón para reiniciar todos los votos y volverlos a cero.
 
+También muestra automáticamente cuál es el tip con mayor cantidad de votos.
+
 ## ¿Cómo se ejecuta?
 
 1. Tener instalado Node.js.
@@ -22,10 +24,10 @@ Además, existe un botón para reiniciar todos los votos y volverlos a cero.
 
 En este trabajo se utilizaron conceptos básicos de React:
 
-Componentes: se creó el componente principal App y un componente reutilizable Boton.
-useState: se utilizó para guardar el estado de los tips, los votos y el tip actual mostrado.
-Props: se usaron en el componente Boton para enviar texto y funciones.
-Eventos: se utilizó onClick en los botones para ejecutar acciones.
-Renderizado dinámico: se muestran en pantalla los tips y votos según el estado actual.
-Actualización de estado sin modificar directamente los datos: se hicieron copias de arrays y objetos.
-localStorage: se utilizó para guardar los votos en el navegador.
+- Componentes: se creó el componente principal App y un componente reutilizable Boton.
+- useState: se utilizó para guardar el estado de los tips, los votos y el tip actual mostrado.
+- Props: se usaron en el componente Boton para enviar texto y funciones.
+- Eventos: se utilizó onClick en los botones para ejecutar acciones.
+- Renderizado dinámico: se muestran en pantalla los tips y votos según el estado actual, además del tip con más votos.
+- Actualización de estado sin modificar directamente los datos: se hicieron copias de arrays y objetos.
+- localStorage: se utilizó para guardar los votos en el navegador.

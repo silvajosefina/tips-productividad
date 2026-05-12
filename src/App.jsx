@@ -1,6 +1,14 @@
 import { useState } from 'react'
 import './App.css'
 
+function Boton(props) {
+  return (
+    <button onClick={props.click}>
+      {props.texto}
+    </button>
+  );
+}
+
 function App() {
   const datosGuardados = localStorage.getItem("tips");
 
@@ -46,60 +54,81 @@ function App() {
         tip: 'Aprende a delegar tareas cuando sea posible.',
         votos: 0,
       }
-    ]);
+    ]
+  );
 
   const [tipActual, setTipActual] = useState(0);
 
   const mostrarTipAleatorio = () => {
     let aleatorio = Math.floor(Math.random() * tips.length);
+
     while (aleatorio === tipActual) {
       aleatorio = Math.floor(Math.random() * tips.length);
     }
+
     setTipActual(aleatorio);
   };
 
   const votarTip = () => {
     const nuevosTips = [...tips];
+
     const tipSeleccionado = nuevosTips[tipActual];
+
     nuevosTips[tipActual] = {
       ...tipSeleccionado,
       votos: tipSeleccionado.votos + 1,
     };
+
     setTips(nuevosTips);
     localStorage.setItem("tips", JSON.stringify(nuevosTips));
   };
 
   const reiniciarVotos = () => {
     const nuevosTips = [...tips];
+
     for (let i = 0; i < nuevosTips.length; i++) {
       nuevosTips[i] = {
         ...nuevosTips[i],
         votos: 0
       };
     }
+
     setTips(nuevosTips);
     localStorage.setItem("tips", JSON.stringify(nuevosTips));
   };
 
+  let masVotado = tips[0];
 
-  function Boton(props) {
-    return (
-      <button onClick={props.click}>
-        {props.texto}
-      </button>
-    );
+  for (let i = 1; i < tips.length; i++) {
+    if (tips[i].votos > masVotado.votos) {
+      masVotado = tips[i];
+    }
   }
 
   return (
-    <>
-      <h1>Tips de Productividad</h1>
-      <p>{tips[tipActual].tip}</p>
-      <p>Votos: {tips[tipActual].votos}</p>
-      <Boton click={mostrarTipAleatorio} texto="Siguiente tip" />
-      <Boton click={votarTip} texto="Votar este tip" />
-      <Boton click={reiniciarVotos} texto="Reiniciar votos" />
-    </>
-  )
+    <div className="contenedor">
+      <h1 className="titulo">💡 Tips de Productividad</h1>
+
+      <div className="seccion-tip">
+        <h2 className="subtitulo">📝 Tip actual</h2>
+        <p className="texto-tip">{tips[tipActual].tip}</p>
+        <p className="votos">⭐ Votos: {tips[tipActual].votos}</p>
+        <div className="fila-botones">
+          <Boton click={votarTip} texto="Votar este tip" />
+          <Boton click={mostrarTipAleatorio} texto="Siguiente tip" />
+        </div>
+      </div>
+
+      <div className="seccion-top">
+        <h2 className="subtitulo">🏆 Tip más votado</h2>
+        <p className="texto-tip">{masVotado.tip}</p>
+        <p className="votos">⭐ Votos: {masVotado.votos}</p>
+        <div className="fila-botones">
+          <Boton click={reiniciarVotos} texto="Reiniciar votos" />
+        </div>
+      </div>
+    </div>
+  );
 }
 
-export default App
+export default App;
