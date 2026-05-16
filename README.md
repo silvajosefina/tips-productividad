@@ -2,7 +2,7 @@
 
 ## Captura de pantalla de la aplicación funcionando
 
-<img src="./public/captura-app.png" alt="Vista de mi aplicación" width="600">
+<img src="./public/captura-app.png" alt="Vista de mi aplicación" width="900">
 
 ## ¿Qué hace la aplicación?
 
