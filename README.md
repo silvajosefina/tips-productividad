@@ -1,5 +1,9 @@
 # Tips de Productividad
 
+## Captura de pantalla de la aplicación funcionando
+
+<img src="./public/captura-app.png" alt="Vista de mi aplicación" width="600">
+
 ## ¿Qué hace la aplicación?
 
 La aplicación muestra distintos tips de productividad de manera aleatoria.  
